@@ -1,0 +1,16 @@
+
+.container {
+	margin-top: 20px;
+}
+
+#result {
+	height: 60px;
+	font-size: 30px;
+}
+
+#keypad {
+	margin-top: 20px;
+}
+button {
+	margin-top: 5px;
+}
