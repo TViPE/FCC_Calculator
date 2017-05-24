@@ -1,6 +1,6 @@
-$(function){
+$(function(){
 	total = 0;
-	var zero = $('btn_0');
+	var zero = $('#btn_0');
 	var one = $('#btn_1');
 	var two = $('#btn_2');
 	var three = $('#btn_3');
@@ -16,21 +16,41 @@ $(function){
 	var divide = $('#btn_division');
 	var dot = $('#btn_dot');
 	var result = $('#result');
+	var equal = $('#btn_result');
+	var ac = $('#btn_ac');
+	var del = $('#btn_del');
+	result.value = "";
 	var temp = 0;
 
-	function addition(num) {
-		temp += num;
-	};
+	$('.btn-default').on('click', function() {
+		result.value += $(this).val();
+		result.val(result.value);
+		console.log(result.value);
+	});
 
-	function substraction(num) {
-		temp -= num;
-	};
+	equal.on('click', function(){
+		var total = eval(result.value);
+		result.value = total;
+		result.val(total);
+		console.log(result.value);
+	});
 
-	function multiplication(num) {
-		temp *= num;
-	};
-	function division(num) {
-		temp /= num;
-	};
+	del.on('click', function(){
+		result.value =  result.value.slice(0, result.value.length-1);
+		result.val(result.value);
+		console.log(result.value);
+	});
 
-}
+	ac.on('click', function(){
+		total = 0;
+		result.value = "";
+		result.val(result.value);
+		console.log(result.value);
+	})
+
+
+
+
+
+
+});
