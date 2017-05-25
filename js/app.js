@@ -1,5 +1,5 @@
 $(function(){
-	total = 0;
+
 	var zero = $('#btn_0');
 	var one = $('#btn_1');
 	var two = $('#btn_2');
@@ -21,36 +21,61 @@ $(function(){
 	var del = $('#btn_del');
 	result.value = "";
 	var temp = 0;
+	var sign = "";
+	var arr = [];
 
-	$('.btn-default').on('click', function() {
+	
+	$('.btn-default').on('click', function(){
+		if(result.value == null){
+			result.value = "";
+		}
 		result.value += $(this).val();
+
+		// Dont touch
+		// ------------------------------------- //
+		if(result.value[0] == "0" && result.value.length >1){
+
+			var nonZeroIndex = result.value.split("").findIndex(function (elem){
+				return elem != "0";
+			});
+
+			result.value = result.value.slice(nonZeroIndex);
+			console.log(result.value);
+		}
+		// ------------------------------------- //
 		result.val(result.value);
-		console.log(result.value);
 	});
 
-	equal.on('click', function(){
-		var total = eval(result.value);
-		result.value = total;
-		result.val(total);
-		console.log(result.value);
+	$('.btn-success').on('click', function(){
+
+		temp = result.value;
+		result.value = "";
+		sign = $(this).attr('value');
+		console.log(temp);
+	})
+	equal.on('click', function() {
+		if (sign == ""){
+			sign = "+";
+		} 
+		var total = temp + " " + sign + " " + result.value;
+		// Check if the total isNaN
+
+		console.log("Total: " + total);
+		var check = eval(total);
+		console.log("Check: " + check);
+		console.log("Result Value : " + result.value);
+		console.log(check);
+
+		if((isNaN(check) === true) || (isFinite(check) == false)){
+			$('.btn-default').prop('disabled', true);
+			check = check + " - Press AC to clear";
+		}
+		result.val(check);
 	});
 
-	del.on('click', function(){
-		result.value =  result.value.slice(0, result.value.length-1);
-		result.val(result.value);
-		console.log(result.value);
-	});
-
-	ac.on('click', function(){
-		total = 0;
+	ac.on('click', function() {
+		$('.btn-default').prop('disabled', false);
 		result.value = "";
 		result.val(result.value);
-		console.log(result.value);
-	})
-
-
-
-
-
-
+	});
 });
