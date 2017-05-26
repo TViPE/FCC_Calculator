@@ -1,6 +1,12 @@
-
+body {
+	background-color: #e3e9f2;
+}
 .container {
-	margin-top: 20px;
+	margin-top: 60px;
+	width: 500px;
+	border: 1px solid black;
+	background-color: #80a5dd;
+	border-radius: 5px;
 }
 
 #result {
@@ -10,7 +16,16 @@
 
 #keypad {
 	margin-top: 20px;
+	margin-bottom: 20px;
 }
 button {
 	margin-top: 5px;
+
 }
+
+.btn-default {
+	width: 75px;
+	text-align: center;
+}
+
+
