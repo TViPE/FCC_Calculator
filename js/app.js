@@ -51,7 +51,7 @@ $(function(){
 		temp = result.value;
 		result.value = "";
 		sign = $(this).attr('value');
-		console.log(temp);
+		console.log("Temp: " + temp);
 	})
 	equal.on('click', function() {
 		if (sign == ""){
@@ -62,6 +62,7 @@ $(function(){
 
 		console.log("Total: " + total);
 		var check = eval(total);
+		result.value = check;
 		console.log("Check: " + check);
 		console.log("Result Value : " + result.value);
 		console.log(check);
@@ -69,6 +70,7 @@ $(function(){
 		if((isNaN(check) === true) || (isFinite(check) == false)){
 			$('.btn-default').prop('disabled', true);
 			check = check + " - Press AC to clear";
+			result.value = "";
 		}
 		result.val(check);
 	});
